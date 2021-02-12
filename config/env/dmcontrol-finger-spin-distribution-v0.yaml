@@ -1,0 +1,34 @@
+# @package _group_
+name: dmcontrol-finger-spin-distribution-v0
+num_envs: 10
+builder:
+  _target_: mtrl.env.builder.build_dmcontrol_vec_env
+  domain_name: finger
+  task_name: spin
+  prefix: size
+  make_kwargs:
+    height: 84
+    width: 84
+    frame_skip: 2 # same as action_repeat
+    visualize_reward: False
+    frame_stack: 3
+    from_pixels: True
+    seed: ${setup.seed}
+    sticky_observation_cfg:
+      should_use: False
+      sticky_probability: 0.1
+      last_k: 1
+train:
+  - 3
+  - 4
+  - 7
+  - 8
+eval:
+  interpolation:
+    - 5
+    - 6
+  extrapolation:
+    - 2
+    - 9
+  base: ${env.train}
+description:

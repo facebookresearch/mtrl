@@ -1,0 +1,13 @@
+-f https://download.pytorch.org/whl/torch_stable.html
+imageio-ffmpeg==0.4.3
+hydra-core==1.0.5
+hydra-submitit-launcher==1.0.1
+imageio==2.9.0
+-e git+https://github.com/facebookresearch/mtenv.git@main#egg=mtenv[all]
+mllogger==0.7
+numpy==1.19.5
+opencv-python==4.5.1.48
+pillow==7.1.0
+termcolor==1.1.0
+torch==1.7.1+cu110
+torchvision==0.8.2+cu110

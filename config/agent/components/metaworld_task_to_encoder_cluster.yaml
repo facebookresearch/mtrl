@@ -1,0 +1,25 @@
+# @package agent.task_to_encoder_cluster
+
+mt10:
+  cluster:
+    action_close: ["close"]
+    action_default: ["insert", "pick and place", "press", "reach"]
+    action_open: ["open"]
+    action_push: ["push"]
+    object_default: ["button", "door", "peg", "revolving joint"]
+    object_drawer: ["drawer"]
+    object_goal: ["goal"]
+    object_puck: ["puck"]
+    object_window: ["window"]
+
+mt50:
+  cluster:
+    action_close: ["close"]
+    action_default: ["insert", "pick and place", "press", "reach"]
+    action_open: ["open"]
+    action_push: ["push"]
+    object_default: ["button", "door", "peg", "revolving joint"]
+    object_drawer: ["drawer"]
+    object_goal: ["goal"]
+    object_puck: ["puck"]
+    object_window: ["window"]

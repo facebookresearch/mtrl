@@ -1,0 +1,57 @@
+# @package _group_
+name: distral
+
+encoder_feature_dim: 50
+num_layers: 4
+num_filters: 32
+distral_alpha: 0.0
+distral_beta: 1.0
+
+decoder: ${agent.encoder.pixel}
+
+builder:
+  _target_: mtrl.agent.distral.Agent
+  # obs_shape
+  # action_shape
+  # device
+  distral_alpha: ${agent.distral_alpha}
+  distral_beta: ${agent.distral_beta}
+  agent_index_to_task_index: ${env.train}
+  distilled_agent_cfg: ${agent.distilled_agent}
+  task_agent_cfg: ${agent.task_agent}
+  multitask_cfg: ${agent.multitask}
+
+distilled_agent: # params for the distilled agent
+  _target_: mtrl.agent.distral.DistilledAgent
+  # obs_shape
+  # action_shape
+  # device
+  actor_cfg: ${agent.actor}
+  actor_optimizer_cfg: ${agent.optimizers.actor}
+
+task_agent: # params for the task-specific agent
+  _target_: mtrl.agent.distral.TaskAgent
+  distral_alpha: ${agent.distral_alpha}
+  distral_beta: ${agent.distral_beta}
+  agent_cfg:
+    _target_: mtrl.agent.sac_ae.Agent
+    # obs_shape
+    # action_shape
+    # device
+    actor_cfg: ${agent.actor}
+    critic_cfg: ${agent.critic}
+    decoder_cfg: ${agent.decoder}
+    multitask_cfg: ${agent.multitask}
+    alpha_optimizer_cfg: ${agent.optimizers.alpha}
+    actor_optimizer_cfg: ${agent.optimizers.actor}
+    critic_optimizer_cfg: ${agent.optimizers.critic}
+    decoder_optimizer_cfg: ${agent.optimizers.decoder}
+    encoder_optimizer_cfg: ${agent.optimizers.encoder}
+    discount: 0.99
+    init_temperature: 0.1
+    actor_update_freq: 2
+    critic_tau: 0.01
+    critic_target_update_freq: 2
+    decoder_update_freq: 1
+    decoder_latent_lambda: 0.0
+    encoder_tau: 0.05

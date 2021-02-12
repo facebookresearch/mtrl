@@ -1,0 +1,9 @@
+# @package agent.transition_model
+
+_target_: mtrl.agent.components.transition_model.make_transition_model
+# action_shape:
+transition_cfg:
+  type: "" # ['' 'deterministic' 'probabilistic' 'ensemble']
+  feature_dim: ${agent.encoder_feature_dim}
+  layer_width: 512
+multitask_cfg: ${agent.multitask}

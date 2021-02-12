@@ -1,0 +1,9 @@
+# @package _group_
+name: metaworld-ml1
+num_envs: 1
+benchmark:
+  _target_: metaworld.ML1
+  env_name: pick-place-v1
+should_perform_reward_normalization: True
+dummy: ${env.benchmark}
+description:

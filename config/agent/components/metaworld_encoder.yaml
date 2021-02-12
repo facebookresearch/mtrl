@@ -1,0 +1,84 @@
+# @package agent.encoder
+
+type_to_select: identity
+
+identity:
+  type: identity
+  feature_dim: ${agent.encoder_feature_dim}
+  # num_filters: ${agent.num_filters}
+  # num_layers: ${agent.num_layers}
+
+feedforward:
+  type: feedforward
+  hidden_dim: 50
+  num_layers: 2
+  feature_dim: ${agent.encoder_feature_dim}
+  should_tie_encoders: true
+
+film:
+  type: film
+  hidden_dim: 50
+  num_layers: 2
+  feature_dim: ${agent.encoder_feature_dim}
+  should_tie_encoders: true
+
+moe:
+  type: moe
+  encoder_cfg:
+    type: feedforward
+    hidden_dim: 50
+    num_layers: 2
+    feature_dim: ${agent.encoder_feature_dim}
+    should_tie_encoders: true
+  num_experts: 9
+  task_id_to_encoder_id_cfg:
+    mode: cluster #attention # supported modes are identity, ensemble, cluster, gate, attention
+    num_envs: ${env.num_envs}
+    gate:
+      embedding_dim: 50
+      hidden_dim: 50
+      num_layers: 2
+      temperature: 1.0
+      should_use_soft_attention: False
+      topk: 2
+      task_encoder_cfg:
+        should_use_task_encoding: True
+        # Instead of computing a task encoding, use the task encoding computed by the task encoder. If this is true, the embedding dim should match with the task encoder's output dim.
+        should_detach_task_encoding: True
+        # Detach the representation from the taske encoder. This argument is used only if `should_use` is True.
+    attention:
+      embedding_dim: 50
+      hidden_dim: 50
+      num_layers: 2
+      temperature: 1.0
+      should_use_soft_attention: True
+      task_encoder_cfg:
+        should_use_task_encoding: True
+        # Instead of computing a task encoding, use the task encoding computed by the task encoder. If this is true, the embedding dim should match with the task encoder's output dim.
+        should_detach_task-encoding: True
+        # Detach the representation from the taske encoder. This argument is used only if `should_use` is True.
+    cluster:
+      env_name: ${env.name}
+      task_description: ${env.description}
+      ordered_task_list: ${env.ordered_task_list}
+      mapping_cfg: ${agent.task_to_encoder_cluster}
+      num_eval_episodes: ${experiment.num_eval_episodes}
+      batch_size: ${replay_buffer.batch_size}
+    identity:
+      num_eval_episodes: ${experiment.num_eval_episodes}
+      batch_size: ${replay_buffer.batch_size}
+    ensemble:
+      num_eval_episodes: ${experiment.num_eval_episodes}
+      batch_size: ${replay_buffer.batch_size}
+
+factorized_moe:
+  type: fmoe
+  encoder_cfg: ${agent.encoder.feedforward}
+  num_factors: 2
+  num_experts_per_factor: [5, 5]
+
+pixel:
+  type: pixel
+  feature_dim: ${agent.encoder_feature_dim}
+  num_filters: ${agent.num_filters}
+  num_layers: ${agent.num_layers}

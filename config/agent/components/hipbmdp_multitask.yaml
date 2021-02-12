@@ -1,0 +1,35 @@
+# @package agent.multitask
+
+num_envs: 10
+should_use_disentangled_alpha: False
+should_use_task_encoder: False
+should_use_multi_head_policy: False
+should_use_disjoint_policy: False  # experimental. This variable is ignored if should_use_multi_head_policy is set to False.
+task_encoder_cfg:
+  model_cfg:
+    _target_: mtrl.agent.components.hipbmdp_theta.ThetaModel
+    dim: 50
+    output_dim: 50
+    num_envs: 10
+    train_env_id: ${env.train}
+  optimizer_cfg:
+    _target_: torch.optim.Adam
+    lr: 1e-3
+    betas: [0.9, 0.999]
+  sampling_strategy:
+    train: embedding
+    eval:
+      base: embedding
+      interpolation: mean_train
+      extrapolation: mean_train
+  losses_to_train: ["transition_reward", "decoder"]
+multi_head_policy_cfg:
+  mask_cfg: ${agent.mask}
+contrastive:
+  should_use: True
+  alpha: 0.01
+actor_cfg:
+  should_condition_model_on_task_info: False
+  should_condition_encoder_on_task_info: False
+  should_concatenate_task_info_with_encoder: False
+critic_cfg: ${agent.multitask.actor_cfg}

@@ -1,0 +1,5 @@
+# @package agent.mask
+
+num_tasks: ${env.num_envs}
+num_eval_episodes: ${experiment.num_eval_episodes}
+batch_size: ${replay_buffer.batch_size}

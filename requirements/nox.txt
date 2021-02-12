@@ -1,0 +1,34 @@
+-f https://download.pytorch.org/whl/torch_stable.html
+git+git://github.com/psf/black
+flake8-bugbear==20.11.1
+flake8-comprehensions==3.3.1
+flake8==3.8.4
+gym==0.17.3
+hiplot==0.1.22
+hydra-core==1.0.5
+hydra-submitit-launcher==1.0.1
+isort==5.7.0
+jupyter==1.0.0
+jupyterlab==3.0.3
+jupyter_nbextensions_configurator==0.4.1
+matplotlib==3.3.3
+-e git+https://github.com/facebookresearch/mtenv.git@main#egg=mtenv[all]
+mllogger==0.7
+mypy==0.790
+nox==2020.12.31
+numpy==1.19.4
+pandas==1.2.0
+pillow==7.1.0
+pre-commit==2.9.3
+psutil==5.8.0
+pytest==6.2.1
+pytest-xdist==2.2.0
+pymongo==3.11.2
+sphinx==3.4.3
+sphinx_rtd_theme==0.5.1
+tensorboard==2.4.0
+termcolor==1.1.0
+torch==1.7.1+cpu
+torchvision==0.8.2+cpu
+typing-extensions==3.7.4.3
+yamllint==1.25.0

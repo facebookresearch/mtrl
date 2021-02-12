@@ -1,0 +1,26 @@
+# @package _group_
+name: pcgrad_sac
+encoder_feature_dim: 50
+num_layers: 4
+num_filters: 32
+
+builder:
+  _target_: mtrl.agent.pcgrad.Agent
+  agent_cfg:
+    _target_: mtrl.agent.sac.Agent
+    # obs_shape
+    # action_shape
+    # device
+    actor_cfg: ${agent.actor}
+    critic_cfg: ${agent.critic}
+    multitask_cfg: ${agent.multitask}
+    alpha_optimizer_cfg: ${agent.optimizers.alpha}
+    actor_optimizer_cfg: ${agent.optimizers.actor}
+    critic_optimizer_cfg: ${agent.optimizers.critic}
+    discount: 0.99
+    init_temperature: 0.1
+    actor_update_freq: 2
+    critic_tau: 0.01
+    critic_target_update_freq: 2
+    encoder_tau: 0.05
+  multitask_cfg: ${agent.multitask}

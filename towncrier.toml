@@ -1,0 +1,40 @@
+[tool.towncrier]
+package = "mtrl"
+package_dir = ""
+filename = "NEWS.md"
+directory = "news/"
+title_format = "{version} ({project_date})"
+issue_format = "[#{issue}](https://github.com/facebookresearch/mtrl/issues/{issue})"
+template = "news/_template.rst"
+start_string = "<!-- TOWNCRIER -->\n"
+
+
+[[tool.towncrier.type]]
+directory = "api_change"
+name = "API Changes"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "bugfix"
+name = "Bug Fixes"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "doc"
+name = "Documentation Changes"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "environment"
+name = "Environment Chages (addition or removal)"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "feature"
+name = "Features"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "misc"
+name = "Miscellaneous Changes"
+showcontent = true

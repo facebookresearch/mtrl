@@ -1,0 +1,49 @@
+# @package _group_
+train:
+  [
+      # The format is [key, abbr, type, average/constant]
+      # If a key ends with "_", n (= number of envs),
+      # copies of the metric are created.
+    [episode, E, int, average],
+    [step, S, int, average],
+    [duration, D, time, average],
+    [episode_reward, R, float, average],
+    [success, Su, float, average],
+    [batch_reward, BR, float, average],
+    [actor_loss, ALOSS, float, average],
+    [critic_loss, CLOSS, float, average],
+    [ae_loss, RLOSS, float, average],
+    [ae_transition_loss, null, float, average],
+    [reward_loss, null, float, average],
+    [actor_target_entropy, null, float, average],
+    [actor_entropy, null, float, average],
+    [alpha_loss, null, float, average],
+    [alpha_value, null, float, average],
+    [contrastive_loss, MLOSS, float, average],
+    [max_rat, MR, float, average],
+    [env_index, ENV, str, constant],
+    [episode_reward_env_index_, R_, float, average],
+    [success_env_index_, Su_, float, average],
+    [env_index_, ENV_, str, constant],
+    [batch_reward_agent_index_, null, float, average],
+    [critic_loss_agent_index_, AGENT_, float, average],
+    [actor_distilled_agent_loss_agent_index_, null, float, average],
+    [actor_loss_agent_index_, null, float, average],
+    [actor_target_entropy_agent_index_, null, float, average],
+    [actor_entropy_agent_index_, null, float, average],
+    [alpha_loss_agent_index_, null, float, average],
+    [alpha_value_agent_index_, null, float, average],
+    [ae_loss_agent_index_, null, float, average],
+  ]
+eval:
+  [
+    [episode, E, int, average],
+    [step, S, int, average],
+    [episode_reward, R, float, average],
+    [env_index, ENV, str, constant],
+    [success, Su, float, average],
+    [episode_reward_env_index_, R_, float, average],
+    [success_env_index_, Su_, float, average],
+    [env_index_, ENV_, str, constant],
+    [batch_reward_agent_index_, AGENT_, float, average],
+  ]

@@ -1,0 +1,23 @@
+# @package _group_
+name: metaworld-mt10
+num_envs: 10
+benchmark:
+  _target_: metaworld.MT10
+builder:
+  make_kwargs:
+    should_perform_reward_normalization: True
+dummy:
+  _target_: metaworld.MT1
+  env_name: pick-place-v1
+description:
+  reach-v1: Reach a goal position. Randomize the goal positions.
+  push-v1: Push the puck to a goal. Randomize puck and goal positions.
+  pick-place-v1: Pick and place a puck to a goal. Randomize puck and goal positions.
+  door-open-v1: Open a door with a revolving joint. Randomize door positions.
+  drawer-open-v1: Open a drawer. Randomize drawer positions.
+  drawer-close-v1: Push and close a drawer. Randomize the drawer positions.
+  button-press-topdown-v1: Press a button from the top. Randomize button positions.
+  peg-insert-side-v1: Insert a peg sideways. Randomize peg and goal positions.
+  window-open-v1: Push and open a window. Randomize window positions.
+  window-close-v1: Push and close a window. Randomize window positions.
+ordered_task_list: # will be auto-populated.

@@ -1,0 +1,4 @@
+# @package _group_
+_target_: mtrl.logger.Logger
+logger_dir: ${setup.save_dir}
+use_tb: False

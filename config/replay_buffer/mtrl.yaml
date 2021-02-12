@@ -1,0 +1,6 @@
+# @package _group_
+_target_: mtrl.replay_buffer.ReplayBuffer
+env_obs_shape: # Will be auto populated
+action_shape: # Will be auto populated
+capacity: 1000000
+batch_size: 128

@@ -1,0 +1,21 @@
+# @package _group_
+seed: 42
+setup: metaworld
+base_path:
+save_dir: ${setup.base_path}/logs/${setup.id}
+device: cuda:0
+id: sample
+description: Sample Task
+tags:
+  # - sac
+  # - metaworld
+  # - baseline
+  # - single_task
+git:
+  commit_id:
+  has_uncommitted_changes:
+  issue_id:
+date:
+slurm_id:
+debug:
+  should_enable: False

@@ -1,0 +1,31 @@
+# @package _group_
+name: sac_ae
+
+encoder_feature_dim: 50
+num_layers: 4
+num_filters: 32
+
+decoder: ${agent.encoder.pixel}
+
+builder:
+  _target_: mtrl.agent.sac_ae.Agent
+  # obs_shape
+  # action_shape
+  # device
+  actor_cfg: ${agent.actor}
+  critic_cfg: ${agent.critic}
+  decoder_cfg: ${agent.decoder}
+  multitask_cfg: ${agent.multitask}
+  alpha_optimizer_cfg: ${agent.optimizers.alpha}
+  actor_optimizer_cfg: ${agent.optimizers.actor}
+  critic_optimizer_cfg: ${agent.optimizers.critic}
+  decoder_optimizer_cfg: ${agent.optimizers.decoder}
+  encoder_optimizer_cfg: ${agent.optimizers.encoder}
+  discount: 0.99
+  init_temperature: 0.1
+  actor_update_freq: 2
+  critic_tau: 0.01
+  critic_target_update_freq: 2
+  decoder_update_freq: 1
+  decoder_latent_lambda: 0.0
+  encoder_tau: 0.05

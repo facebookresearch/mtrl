@@ -1,0 +1,32 @@
+# @package agent.multitask
+
+num_envs: ${env.num_envs}
+should_use_disentangled_alpha: False
+should_use_task_encoder: False
+should_use_multi_head_policy: False
+should_use_disjoint_policy: False # experimental. This variable is ignored if should_use_multi_head_policy is set to False.
+task_encoder_cfg:
+  model_cfg:
+    _target_: mtrl.agent.components.task_encoder.TaskEncoder
+    pretrained_embedding_cfg:
+      should_use: False
+      path_to_load_from: /private/home/sodhani/projects/mtrl/metadata/task_embedding/roberta_small/${env.name}.json
+      ordered_task_list: ${env.ordered_task_list}
+    num_embeddings: ${agent.multitask.num_envs}
+    embedding_dim: 50
+    hidden_dim: 50
+    num_layers: 2
+    output_dim: 50
+  optimizer_cfg: ${agent.optimizers.actor}
+  losses_to_train: ["critic", "transition_reward", "decoder", "task_encoder"]
+multi_head_policy_cfg:
+  mask_cfg: ${agent.mask}
+actor_cfg:
+  should_condition_model_on_task_info: False
+  should_condition_encoder_on_task_info: True
+  should_concatenate_task_info_with_encoder: True
+  moe_cfg:
+    mode: soft_modularization
+    num_experts: 4
+    should_use: False
+critic_cfg: ${agent.multitask.actor_cfg}

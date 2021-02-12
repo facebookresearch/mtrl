@@ -1,0 +1,9 @@
+# @package agent.encoder
+
+type_to_select: pixel
+
+pixel:
+  type: pixel
+  feature_dim: ${agent.encoder_feature_dim}
+  num_filters: ${agent.num_filters}
+  num_layers: ${agent.num_layers}

@@ -1,0 +1,61 @@
+# @package _group_
+name: metaworld-mt50
+num_envs: 50
+benchmark:
+  _target_: metaworld.MT50
+should_perform_reward_normalization: True
+dummy:
+  _target_: metaworld.MT1
+  env_name: pick-place-v1
+description:
+  reach-v1: Reach a goal position. Randomize the goal positions.
+  push-v1: Push the puck to a goal. Randomize puck and goal positions.
+  pick-place-v1: Pick and place a puck to a goal. Randomize puck and goal positions.
+  door-open-v1: Open a door with a revolving joint. Randomize door positions.
+  drawer-open-v1: Open a drawer. Randomize drawer positions.
+  drawer-close-v1: Push and close a drawer. Randomize the drawer positions.
+  button-press-topdown-v1: Press a button from the top. Randomize button positions.
+  peg-insert-side-v1: Insert a peg sideways. Randomize peg and goal positions.
+  window-open-v1: Push and open a window. Randomize window positions.
+  window-close-v1: Push and close a window. Randomize window positions.
+  door-close-v1: Close a door with a revolvinig joint. Randomize door positions.
+  reach-wall-v1: Bypass a wall and reach a goal. Randomize goal positions.
+  pick-place-wall-v1: Pick a puck, bypass a wall and place the puck. Randomize puck and goal positions.
+  push-wall-v1: Bypass a wall and push a puck to a goal. Randomize puck and goal positions.
+  button-press-v1: Press a button. Randomize button positions.
+  button-press-topdown-wall-v1: Bypass a wall and press a button from the top. Randomize button positions.
+  button-press-wall-v1: Bypass a wall and press a button. Randomize the button positions.
+  peg-unplug-side-v1: Unplug a peg sideways. Randomize peg positions.
+  disassemble-v1: Pick a nut out of the a peg. Randomize the nut positions.
+  hammer-v1: Hammer a screw on the wall. Randomize the hammer and the screw positions.
+  plate-slide-v1: Get a plate from the cabinet. Randomize plate and cabinet positions
+  plate-slide-side-v1: Get a plate from the cabinet sideways. Randomize plate and cabinet positions
+  plate-slide-back-v1: Slide a plate into a cabinet. Randomize the plate and cabinet positions
+  plate-slide-back-side-v1: Slide a plate into a cabinet sideways. Randomize the plate and cabinet positions
+  handle-press-v1: Press a handle down. Randomize the handle positions
+  handle-pull-v1: Pull a handle up. Randomize the handle positions.
+  handle-press-side-v1: Press a handle down sideways. Randomize the handle positions.
+  handle-pull-side-v1: Pull a handle up sideways. Randomize the handle positions.
+  stick-push-v1: Grasp a stick and push a box using the stick. Randomize stick positions.
+  stick-pull-v1: Grasp a stick and pull a box with the stick. Randomize stick positions.
+  basketball-v1: Dunk the basketball into the basket. Randomize basketball and basket positions.
+  soccer-v1: Kick a soccer into the goal. Randomize the soccer and goal positions.
+  faucet-open-v1: Rotate the faucet counter-clockwise. Randomize faucet positions.
+  faucet-close-v1: Rotate the faucet clockwise. Randomize faucet positions.
+  coffee-push-v1: Push a mug under a coffee machine. Randomize the mug and the machine positions.
+  coffee-pull-v1: Pull a mug from a coffee machine. Randomize the mug and the machine positions.
+  coffee-button-v1: Push a button on the coffee machine. Randomize the position of the coffee machine.
+  sweep-v1: Sweep a puck off the table. Randomize puck positions.
+  sweep-into-v1: Sweep a puck into a hole. Randomize puck positions.
+  pick-out-of-hole-v1: Pick up a puck from a hole. Randomize puck and goal positions.
+  assembly-v1: Pick up a nut and place it onto a peg. Randomize nut and peg positions.
+  shelf-place-v1: Pick and place a puck onto a shelf. Randomize puck and shelf positions.
+  push-back-v1: Pull a puck to a goal. Randomize puck and goal positions.
+  lever-pull-v1: Pull a lever down 90 degrees. Randomize lever positions.
+  dial-turn-v1: Rotate a dial 180 degrees. Randomize dial positions.
+  bin-picking-v1: Grasp the puck from one bin and place it into another bin. Randomize puck positions.
+  box-close-v1: Grasp the cover and close the box with it. Randomize the cover and box positions.
+  hand-insert-v1: Insert the gripper into a hole.
+  door-lock-v1: Lock the door by rotating the lock clockwise. Randomize door positions.
+  door-unlock-v1: Unlock the door by rotating the lock counter-clockwise. Randomize door positions.
+ordered_task_list: # will be auto-populated.

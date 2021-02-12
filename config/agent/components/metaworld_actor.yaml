@@ -1,0 +1,8 @@
+# @package agent.actor
+
+_target_: mtrl.agent.components.actor.Actor
+num_layers: 3
+hidden_dim: 400
+log_std_bounds: [-20, 2]
+encoder_cfg: ${agent.encoder}
+multitask_cfg: ${agent.multitask}

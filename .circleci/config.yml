@@ -1,0 +1,66 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2.1
+jobs:
+  # Linux
+
+  py37_linux:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - run:
+          name: "Preparing environment"
+          command: |
+            sudo apt-get install -y expect
+            sudo pip install nox
+      - run:
+          name: "Testing mtrl"
+          command: |
+              export NOX_PYTHON_VERSIONS=3.7
+              pip install nox
+              python3 -m nox
+
+  py38_linux:
+    docker:
+      - image: circleci/python:3.8
+    steps:
+      - checkout
+      - run:
+          name: "Preparing environment"
+          command: |
+            sudo apt-get install -y expect
+            sudo pip install nox
+      - run:
+          name: "Testing mtrl"
+          command: |
+              export NOX_PYTHON_VERSIONS=3.8
+              pip install nox
+              python3 -m nox
+
+  py39_linux:
+    docker:
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - run:
+          name: "Preparing environment"
+          command: |
+            sudo apt-get install -y expect
+            sudo pip install nox
+      - run:
+          name: "Testing mtrl"
+          command: |
+              export NOX_PYTHON_VERSIONS=3.9
+              pip install nox
+              python3 -m nox
+
+workflows:
+  version: 2.0
+  build:
+    jobs:
+      - py37_linux
+      - py38_linux
+      - py39_linux

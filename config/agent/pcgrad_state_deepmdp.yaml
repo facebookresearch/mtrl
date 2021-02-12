@@ -1,0 +1,41 @@
+# @package _group_
+name: pcgrad_state_deepmdp
+encoder_feature_dim: 50
+num_layers: 0
+num_filters: 0
+
+decoder: ${agent.encoder.identity}
+reward_decoder:
+  feature_dim: ${agent.encoder_feature_dim}
+reward_decoder_optimizer: ${agent.optimizers.decoder}
+transition_model_optimizer: ${agent.optimizers.decoder}
+
+builder:
+  _target_: mtrl.agent.pcgrad.Agent
+  agent_cfg:
+    _target_: mtrl.agent.deepmdp.Agent
+    # obs_shape
+    # action_shape
+    # device
+    actor_cfg: ${agent.actor}
+    critic_cfg: ${agent.critic}
+    decoder_cfg: ${agent.decoder}
+    multitask_cfg: ${agent.multitask}
+    reward_decoder_cfg: ${agent.reward_decoder}
+    transition_model_cfg: ${agent.transition_model}
+    alpha_optimizer_cfg: ${agent.optimizers.alpha}
+    actor_optimizer_cfg: ${agent.optimizers.actor}
+    critic_optimizer_cfg: ${agent.optimizers.critic}
+    decoder_optimizer_cfg: ${agent.optimizers.decoder}
+    encoder_optimizer_cfg: ${agent.optimizers.encoder}
+    reward_decoder_optimizer_cfg: ${agent.reward_decoder_optimizer}
+    transition_model_optimizer_cfg: ${agent.transition_model_optimizer}
+    discount: 0.99
+    init_temperature: 1.0
+    actor_update_freq: 1
+    critic_tau: 0.005
+    critic_target_update_freq: 1
+    decoder_update_freq: 1
+    decoder_latent_lambda: 0.0
+    encoder_tau: 0.05
+  multitask_cfg: ${agent.multitask}

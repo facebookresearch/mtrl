@@ -1,0 +1,24 @@
+defaults:
+  - setup: metaworld
+  - experiment: ${defaults.0.setup}
+  - agent: sac
+  - agent/components: ${defaults.0.setup}_actor
+  - agent/components: ${defaults.0.setup}_critic
+  - agent/components: ${defaults.0.setup}_encoder
+  - agent/components: ${defaults.0.setup}_transition_model
+  # - agent/components: task_to_encoder_cluster
+  - agent/components: ${defaults.0.setup}_mask
+  - agent/components: ${defaults.0.setup}_multitask
+  - agent/components: ${defaults.0.setup}_transition_model
+  - agent/components: ${defaults.0.setup}_gradnorm
+  - agent/components: ${defaults.0.setup}_task_to_encoder_cluster
+  - agent/optimizers: ${defaults.0.setup}_actor
+  - agent/optimizers: ${defaults.0.setup}_alpha
+  - agent/optimizers: ${defaults.0.setup}_critic
+  - agent/optimizers: ${defaults.0.setup}_decoder
+  - agent/optimizers: ${defaults.0.setup}_encoder
+  - env: ???
+  - replay_buffer: mtrl
+  - logger: mtrl
+  - metrics: ${defaults.0.setup}
+  - logbook: mtrl
