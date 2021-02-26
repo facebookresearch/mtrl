@@ -96,4 +96,5 @@ Ask questions in the chat or github issues:
 
 ## Acknowledgements
 
+* Our implementation of SAC is inspired by Denis Yarats' implementation of [SAC](https://github.com/denisyarats/pytorch_sac).
 * Project file pre-commit, mypy config, towncrier config, circleci etc are based on same files from [Hydra](https://github.com/facebookresearch/hydra).
