@@ -22,7 +22,7 @@ task_encoder_cfg:
       base: embedding
       interpolation: mean_train
       extrapolation: mean_train
-  losses_to_train: ["transition_reward", "decoder"]
+  losses_to_train: ["transition_reward", "decoder", "task_encoder"]
 multi_head_policy_cfg:
   mask_cfg: ${agent.mask}
 contrastive:
