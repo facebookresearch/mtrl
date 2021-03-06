@@ -1,0 +1,22 @@
+# @package _group_
+name: metaworld
+builder:
+  _target_: mtrl.experiment.${experiment.name}.Experiment
+init_steps: 1500
+num_train_steps: 1000000
+eval_freq: 10000 # same as save frequency. This should be a muliple of save.buffer.size_per_chunk
+num_eval_episodes: 10
+should_resume: True
+save:
+  model:
+    retain_last_n: 1
+    # setting a natural number (say 5) retains the last n (say 5) models.
+    # setting -1 retains all the models.
+    # setting 0 retains no models.
+  buffer:
+    should_save: True
+    size_per_chunk: 10000
+    num_samples_to_save: -1 # number of samples to save. Set to -1 to save all samples
+save_dir: ${setup.save_dir}
+save_video: False
+envs_to_exclude_during_training:
