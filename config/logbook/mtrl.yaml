@@ -3,8 +3,3 @@ _target_: ml_logger.logbook.make_config
 write_to_console: False
 logger_dir: ${setup.save_dir}
 create_multiple_log_files: False
-mongo_config:
-    host: devfair0140
-    port: 27017
-    db: project
-    collection: mtrl-v1
