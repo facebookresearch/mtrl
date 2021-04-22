@@ -64,6 +64,9 @@ HiP-BMDP
     setup=hipbmdp \
     env=dmcontrol-finger-spin-distribution-v0 \
     agent=hipbmdp \
+    agent.multitask.should_use_task_encoder=True \
+    agent.multitask.should_condition_encoder_on_task_info=True \
+    agent.multitask.should_concatenate_task_info_with_encoder=True \
     setup.seed=1 \
     replay_buffer.batch_size=256
 
