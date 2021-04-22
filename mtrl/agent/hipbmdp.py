@@ -108,22 +108,22 @@ class Agent(deepmdp.Agent):
         return self._cache_theta_sampling_strategy[modes[0]]
 
     def get_task_encoding(
-        self, env_index: TensorType, mode: List[str], disable_grad: bool
+        self, env_index: TensorType, modes: List[str], disable_grad: bool
     ):
 
-        theta_sampling_strategy = self._get_theta_sampling_strategy(modes=mode)
+        theta_sampling_strategy = self._get_theta_sampling_strategy(modes=modes)
 
         if disable_grad:
             with torch.no_grad():
                 return self.task_encoder(
                     env_index=env_index.to(self.device),
                     theta_sampling_strategy=theta_sampling_strategy,
-                    mode=mode,
+                    modes=modes,
                 )
         return self.task_encoder(
             env_index=env_index.to(self.device),
             theta_sampling_strategy=theta_sampling_strategy,
-            mode=mode,
+            modes=modes,
         )
 
     def update_task_encoder(
