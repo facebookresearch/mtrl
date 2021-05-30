@@ -36,6 +36,7 @@ Together, these two components enable use of MTRL across different environments 
 ### List of publications & submissions using MTRL (please create a pull request to add the missing entries):
 
 * [Learning Robust State Abstractions for Hidden-Parameter Block MDPs](https://arxiv.org/abs/2007.07206)
+* [Multi-Task Reinforcement Learning with Context-based Representations](https://arxiv.org/abs/2102.06177)
 
 ### License
 
