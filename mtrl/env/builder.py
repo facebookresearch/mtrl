@@ -2,17 +2,11 @@
 from copy import deepcopy
 from typing import Any, Dict, List, Optional, Tuple
 
-import metaworld
 import mtenv
 from gym.vector.async_vector_env import AsyncVectorEnv
-from mtenv.envs.metaworld.env import (
-    get_list_of_func_to_make_envs as get_list_of_func_to_make_metaworld_envs,
-)
 
 from mtrl.env.vec_env import MetaWorldVecEnv, VecEnv
 from mtrl.utils.types import ConfigType
-
-EnvIdToTaskMapType = Dict[str, metaworld.Task]
 
 
 def build_dmcontrol_vec_env(
@@ -50,10 +44,13 @@ def build_dmcontrol_vec_env(
 
 def build_metaworld_vec_env(
     config: ConfigType,
-    benchmark: metaworld.Benchmark,
+    benchmark: "metaworld.Benchmark",  # type: ignore[name-defined] # noqa: F821
     mode: str,
-    env_id_to_task_map: Optional[EnvIdToTaskMapType],
+    env_id_to_task_map: Optional[Dict[str, "metaworld.Task"]],  # type: ignore[name-defined] # noqa: F821
 ) -> Tuple[AsyncVectorEnv, Optional[Dict[str, Any]]]:
+    from mtenv.envs.metaworld.env import (
+        get_list_of_func_to_make_envs as get_list_of_func_to_make_metaworld_envs,
+    )
     benchmark_name = config.env.benchmark._target_.replace("metaworld.", "")
     num_tasks = int(benchmark_name.replace("MT", ""))
     make_kwargs = {
