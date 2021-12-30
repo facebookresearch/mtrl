@@ -37,6 +37,7 @@ Together, these two components enable use of MTRL across different environments 
 
 * [Learning Robust State Abstractions for Hidden-Parameter Block MDPs](https://arxiv.org/abs/2007.07206)
 * [Multi-Task Reinforcement Learning with Context-based Representations](https://arxiv.org/abs/2102.06177)
+    *  We use the `af8417bfc82a3e249b4b02156518d775f29eb289` commit for the MetaWorld environments for our experiments.
 
 ### License
 
