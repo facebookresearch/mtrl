@@ -30,5 +30,5 @@ tensorboard==2.4.0
 termcolor==1.1.0
 torch==1.7.1+cpu
 torchvision==0.8.2+cpu
-typing-extensions==3.7.4.3
+typing-extensions
 yamllint==1.25.0
